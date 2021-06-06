@@ -1,23 +1,36 @@
 
-var menu1 = document.getElementById("menu1");
-var menu2 = document.getElementById("menu2");
-var menu3 = document.getElementById("menu3");
+function findTarget(target) {
+    const target = e.target;
+    while(!(target instanceof HTMLAnchorElement || target === document.body) && target.parentElement) {
+        target = target.parentElement
+    }
 
+    return anchor instanceof HTMLAnchorElement && anchor.href ? anchor : null;
+}
 
-menu1.addEventListener('click', function(e) {
-    history.pushState(null, '', 'menu1')
+function navigateTo(url){
+    
+}
+
+document.addEventListener('click', function(e) {
+    console.log(e);
+    const clickAnchor = findTarget(e.target);
+
+    if (!clickAnchor) return;
+    const targetUrl = clickAnchor.href;
+
+    // 按住特殊键后点击链接
+    if (e.metaKey || e.ctrlKey || e.shiftKey) {
+        return;
+    }
+    e.preventDefault();
+
+    navigateTo(targetUrl);
 }, false);
 
-menu2.addEventListener('click', function(e) {
-    history.pushState(null, '', 'menu2')
-}, false);
-menu3.addEventListener('click', function(e) {
-    history.pushState(null, '', 'menu3')
-}, false);
 
+
+// 监听路由变化
 window.addEventListener('onpopstate', function() {
     console.log(111)
 })
-window.onpopstate = function(){
-    console.log(213)
-}

@@ -7,7 +7,7 @@ const path = require('path')
 const router = new Router(); // 实例化路由
 const app = new Koa();
 
-router.get('/',async (ctx)=>{
+router.get('/app/*',async (ctx)=>{
     await ctx.render('index')  
 })
 console.log(__dirname)
