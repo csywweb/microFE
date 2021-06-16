@@ -1,18 +1,17 @@
 
 function findTarget(target) {
-    const target = e.target;
-    while(!(target instanceof HTMLAnchorElement || target === document.body) && target.parentElement) {
+    while(!(target instanceof HTMLAnchorElement) && target.parentElement) {
         target = target.parentElement
     }
 
-    return anchor instanceof HTMLAnchorElement && anchor.href ? anchor : null;
+    return target instanceof HTMLAnchorElement && target.href ? target : null;
 }
 
 function navigateTo(url){
-    
+    console.log("url:", url);
 }
 
-document.addEventListener('click', function(e) {
+document.getElementsByTagName('body')[0].addEventListener('click', function(e) {
     console.log(e);
     const clickAnchor = findTarget(e.target);
 
@@ -26,7 +25,7 @@ document.addEventListener('click', function(e) {
     e.preventDefault();
 
     navigateTo(targetUrl);
-}, false);
+});
 
 
 

@@ -65,3 +65,4 @@ package-lock.json
 yarn-error.log
 dist_client/*
 !dist_client/.gitkeep
+dist/*
